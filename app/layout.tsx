@@ -9,7 +9,7 @@ const monaSans = Mona_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AI-Powered Real-Time Interview Platform for Smarter Hiring",
+  title: "AI-Powered Real-Time Interview Platform",
   description: "An intelligent voice-driven interview platform that helps companies assess candidates in real time using conversational AI",
 };
 

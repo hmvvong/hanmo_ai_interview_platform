@@ -262,7 +262,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     // Regular auth form
     return (
         <AuthCard>
-            <AuthHeader title="AI-powered real-time interview platform for smarter hiring" />
+            <AuthHeader title="AI-powered real-time interview platform" />
 
             <Form {...form}>
               <form
