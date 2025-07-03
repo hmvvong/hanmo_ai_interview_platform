@@ -9,8 +9,8 @@ const monaSans = Mona_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Pytai: AI-Powered Real-Time Interview Platform for Smarter Hiring",
-  description: "Pytai.AI is an intelligent voice-driven interview platform that helps companies assess candidates in real time using conversational AI",
+  title: "AI-Powered Real-Time Interview Platform for Smarter Hiring",
+  description: "An intelligent voice-driven interview platform that helps companies assess candidates in real time using conversational AI",
 };
 
 export default function RootLayout({

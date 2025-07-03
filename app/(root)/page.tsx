@@ -73,13 +73,17 @@ async function Home() {
           </AnimatedCTAButton>
         </div>
 
-        <Image
-          src="/robot.png"
-          alt="Robot Pytai"
-          width={400}
-          height={254}
-          className="w-[250px] sm:w-[400px] mx-auto mb-0 sm:mx-0 sm:mb-4 md:mb-0"
-        />
+          <div className="relative w-[250px] sm:w-[400px] mx-auto sm:mx-0 sm:mb-4 md:mb-0 fade-mask">
+              <Image
+                  src="/robot.png"
+                  alt="Robot Homepage"
+                  width={250}
+                  height={300}
+                  className="w-full rounded-3xl opacity-90 shadow-lg"
+              />
+          </div>
+
+
       </section>
 
       <section className="flex flex-col gap-6 mt-8">
