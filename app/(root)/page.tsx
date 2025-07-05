@@ -12,6 +12,7 @@ import {
 import AnimatedCTAButton from "@/components/AnimatedCTAButton";
 import AnimatedText from "@/components/AnimatedText";
 import Footer from "@/components/Footer";
+import {dummyInterviews} from "@/constants";
 
 async function Home() {
   const user = await getCurrentUser();
@@ -91,7 +92,12 @@ async function Home() {
           <span className="text-primary-200">{user?.name}</span>
         </h2>
 
+          {/*dummy*/}
         <div className="interviews-section">
+            {/*{dummyInterviews.map((interview) => (*/}
+            {/*    <InterviewCard {...interview} key={interview.id} />*/}
+            {/*))}*/}
+
           {hasPastInterviews ? (
             userInterviews?.map((interview) => (
               <InterviewCard
@@ -117,6 +123,13 @@ async function Home() {
         <h2>All Interviews {allInterview && allInterview.length > 0 && 
           <span className="text-primary-200">({allInterview.length})</span>
         }</h2>
+
+          {/*<div className="interviews-section">*/}
+          {/*/!*dummy*!/*/}
+          {/*{dummyInterviews.map((interview) => (*/}
+          {/*    <InterviewCard {...interview} key={interview.id} />*/}
+          {/*))}*/}
+          {/*</div>*/}
 
 
         {hasUpcomingInterviews ? (
