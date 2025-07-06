@@ -8,6 +8,7 @@ import { getCurrentUser } from "@/lib/actions/auth.action";
 import {
   getInterviewsByUserId,
   getLatestInterviews,
+  getAllInterviews,
 } from "@/lib/actions/general.action";
 import AnimatedCTAButton from "@/components/AnimatedCTAButton";
 import AnimatedText from "@/components/AnimatedText";
@@ -17,10 +18,15 @@ import {dummyInterviews} from "@/constants";
 async function Home() {
   const user = await getCurrentUser();
 
-  const [userInterviews, allInterview] = await Promise.all([
+  const [userInterviews, allInterview, allInterviewsInDB] = await Promise.all([
     getInterviewsByUserId(user?.id || ''),
     getLatestInterviews({ userId: user?.id || '' }),
+    getAllInterviews(),
   ]);
+
+  console.log("User interviews:", userInterviews);
+  console.log("All interviews:", allInterview);
+  console.log("ALL interviews in database:", allInterviewsInDB);
 
   const hasPastInterviews = (userInterviews?.length ?? 0) > 0;
   const hasUpcomingInterviews = (allInterview?.length ?? 0) > 0;

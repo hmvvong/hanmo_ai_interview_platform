@@ -205,11 +205,43 @@ const Agent = ({
 
     if (callStatus === CallStatus.FINISHED) {
       if (type === "generate") {
-        toast.success("Interview generated successfully!", {
-          duration: 3000,
-          id: "generate-toast"
-        });
-        router.push("/");
+        // After VAPI workflow completes, update the interview with userId
+        (async () => {
+          try {
+            console.log("🔄 VAPI workflow completed, updating interview with userId...");
+            
+            // Update the latest interview without userId
+            const response = await fetch('/api/vapi/generate', {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            const data = await response.json();
+            console.log("📝 PUT response:", data);
+            
+            if (data.success) {
+              console.log("✅ Interview updated with userId successfully");
+              toast.success("Interview generated successfully!", {
+                duration: 3000,
+                id: "generate-toast"
+              });
+            } else {
+              console.error("❌ Failed to update interview with userId:", data.error);
+              toast.error(`Interview created but failed to associate with your account: ${data.error}`, {
+                id: "generate-toast"
+              });
+            }
+          } catch (error) {
+            console.error("❌ Error updating interview with userId:", error);
+            toast.error("Interview created but failed to associate with your account", {
+              id: "generate-toast"
+            });
+          }
+          
+          router.push("/");
+        })();
       } else {
         handleGenerateFeedback(messages);
       }
@@ -228,7 +260,7 @@ const Agent = ({
       await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
         variableValues: {
           username: userName,
-          userid: userId,
+          // userId is now handled in the API endpoint via session
         },
       });
     } else {

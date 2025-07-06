@@ -146,6 +146,8 @@ export async function getLatestInterviews(
   const defaultLimit = Number(200);
   const { userId, limit = defaultLimit } = params;
 
+  console.log("🔍 getLatestInterviews called with params:", params);
+
   const interviews = await db
     .collection("interviews")
     .orderBy("createdAt", "desc")
@@ -154,23 +156,59 @@ export async function getLatestInterviews(
       .limit(Number(limit) || 10)
       .get();
 
-  return interviews.docs.map((doc) => ({
+  console.log("🔍 Found latest interviews (excluding userId:", userId, ")");
+  console.log("🔍 Number of latest interviews found:", interviews.docs.length);
+
+  const result = interviews.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   })) as Interview[];
+  
+  console.log("🔍 Latest interview details:", result);
+
+  return result;
+}
+
+export async function getAllInterviews(): Promise<Interview[] | null> {
+  console.log("🔍 getAllInterviews called - fetching ALL interviews");
+  
+  const interviews = await db
+    .collection("interviews")
+    .orderBy("createdAt", "desc")
+    .get();
+
+  console.log("🔍 Total interviews in database:", interviews.docs.length);
+  
+  const result = interviews.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  })) as Interview[];
+  
+  console.log("🔍 ALL interview details:", result);
+  
+  return result;
 }
 
 export async function getInterviewsByUserId(
   userId: string
 ): Promise<Interview[] | null> {
+  console.log("🔍 getInterviewsByUserId called with userId:", userId);
+  
   const interviews = await db
     .collection("interviews")
     .where("userId", "==", userId)
     .orderBy("createdAt", "desc")
     .get();
 
-  return interviews.docs.map((doc) => ({
+  console.log("🔍 Found interviews for userId:", userId);
+  console.log("🔍 Number of interviews found:", interviews.docs.length);
+  
+  const result = interviews.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   })) as Interview[];
+  
+  console.log("🔍 Interview details:", result);
+  
+  return result;
 }
