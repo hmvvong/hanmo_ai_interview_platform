@@ -13,7 +13,6 @@ import {
 import AnimatedCTAButton from "@/components/AnimatedCTAButton";
 import AnimatedText from "@/components/AnimatedText";
 import Footer from "@/components/Footer";
-import {dummyInterviews} from "@/constants";
 
 async function Home() {
   const user = await getCurrentUser();
@@ -63,34 +62,24 @@ async function Home() {
   return (
     <>
       <section className="card-cta flex-col-reverse md:flex-row items-center">
-        <div className="flex flex-col gap-6 max-w-md mt-6 sm:mt-0">
+        <div className="flex flex-col gap-10 mt-6 sm:mt-0 px-3 py-5">
           <AnimatedText delay={0.1}>
-            <h2><span className="text-orange-300">AI-Powered</span> Real-Time Interview Platform for Smarter Hiring</h2>
+            <h2 className="mb-5"><span className="text-orange-300">AI-Powered</span> Real-Time Interview Platform for Smarter Hiring</h2>
           </AnimatedText>
           
           <AnimatedText delay={0.2}>
-            <p className="text-lg">
-              Practice real interview questions & get instant feedback.<br />
-              For example: Frontend, Backend, Fullstack, Design, UX/UI.
+            <p className="text-xl mb-5 font-semibold">
+              Practice real interview questions & get instant feedback<br />
+              For example: Frontend, Backend, Fullstack, Design, UX/UI
             </p>
           </AnimatedText>
 
-          <AnimatedCTAButton href="/interview" delay={0.3}>
-            Create an Interview
-          </AnimatedCTAButton>
-        </div>
-
-          <div className="relative w-[250px] sm:w-[400px] mx-auto sm:mx-0 sm:mb-4 md:mb-0 fade-mask">
-              <Image
-                  src="/robot.png"
-                  alt="Robot Homepage"
-                  width={250}
-                  height={300}
-                  className="w-full rounded-3xl opacity-90 shadow-lg"
-              />
+          <div className="flex justify-start mb-5">
+            <AnimatedCTAButton href="/interview" delay={0.3}>
+              Create an Interview
+            </AnimatedCTAButton>
           </div>
-
-
+        </div>
       </section>
 
       <section className="flex flex-col gap-6 mt-8">
@@ -120,7 +109,7 @@ async function Home() {
               />
             ))
           ) : (
-            <p>You haven&apos;t created or taken any interviews yet</p>
+            <p className="text-xl">You haven&apos;t created or taken any interviews yet</p>
           )}
         </div>
       </section>

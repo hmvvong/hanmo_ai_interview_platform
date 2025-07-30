@@ -262,8 +262,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     // Regular auth form
     return (
         <AuthCard>
-            <AuthHeader title="AI-powered real-time interview platform" />
-
+            <AuthHeader title="AI interview platform" />
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}

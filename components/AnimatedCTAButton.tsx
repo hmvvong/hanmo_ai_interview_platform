@@ -39,7 +39,7 @@ const AnimatedCTAButton = ({
   }
 
   return (
-    <div className="relative inline-block mx-auto">
+    <div className="relative inline-block">
       {/* Glow effect */}
       {showGlow && (
         <motion.div

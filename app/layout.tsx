@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Mona_Sans } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
 
 const monaSans = Mona_Sans({
   variable: "--font-mona-sans",
@@ -9,7 +8,7 @@ const monaSans = Mona_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AI-Powered Real-Time Interview Platform",
+  title: "AI Interview Platform",
   description: "An intelligent voice-driven interview platform that helps companies assess candidates in real time using conversational AI",
 };
 
@@ -24,7 +23,6 @@ export default function RootLayout({
         className={`${monaSans.variable} antialiased pattern`}
       >
         {children}
-        <Toaster position="bottom-right" richColors />
       </body>
     </html>
   );
